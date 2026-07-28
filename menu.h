@@ -6,6 +6,10 @@ void handleMainMenu();
 
 void handleManualMode();
 
+void handleTherapySetMin();
+
+void handleTherapySetMax();
+
 void handleTherapyMode();
 
 void handlePauseMenu();

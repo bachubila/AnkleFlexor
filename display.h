@@ -9,7 +9,11 @@ void drawMainMenu(int selected);
 
 void drawManual();
 
-void drawTherapy();
+void drawTherapySetMin(int value);
+
+void drawTherapySetMax(int value);
+
+void drawTherapy(int minVal, int maxVal);
 
 void drawPaused(int selected);
 

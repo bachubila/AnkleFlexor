@@ -68,7 +68,45 @@ void drawManual(){
 
 
 
-void drawTherapy(){
+void drawTherapySetMin(int value){
+
+  lcd.clear();
+
+  lcd.print("Set Min Angle");
+
+  lcd.setCursor(0,1);
+  lcd.print("Value: ");
+  lcd.print(value);
+
+  lcd.setCursor(0,2);
+  lcd.print("Rotate: adjust");
+  lcd.setCursor(0,3);
+  lcd.print("Click: confirm");
+
+}
+
+
+
+void drawTherapySetMax(int value){
+
+  lcd.clear();
+
+  lcd.print("Set Max Angle");
+
+  lcd.setCursor(0,1);
+  lcd.print("Value: ");
+  lcd.print(value);
+
+  lcd.setCursor(0,2);
+  lcd.print("Rotate: adjust");
+  lcd.setCursor(0,3);
+  lcd.print("Click: confirm");
+
+}
+
+
+
+void drawTherapy(int minVal, int maxVal){
 
   lcd.clear();
 
@@ -76,6 +114,14 @@ void drawTherapy(){
 
   lcd.setCursor(0,1);
   lcd.print("Running...");
+
+  lcd.setCursor(0,2);
+  lcd.print("Min: ");
+  lcd.print(minVal);
+
+  lcd.setCursor(0,3);
+  lcd.print("Max: ");
+  lcd.print(maxVal);
 
 }
 

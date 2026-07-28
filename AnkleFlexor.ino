@@ -42,6 +42,20 @@ void loop() {
       break;
 
 
+    case THERAPY_SET_MIN:
+
+      handleTherapySetMin();
+
+      break;
+
+
+    case THERAPY_SET_MAX:
+
+      handleTherapySetMax();
+
+      break;
+
+
     case THERAPY_MODE:
 
       handleTherapyMode();
