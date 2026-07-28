@@ -33,6 +33,34 @@ void showGreeting(){
 
 
 
+void drawCalibrationWarning(){
+
+  lcd.clear();
+
+  lcd.print("!! WARNING !!");
+  lcd.setCursor(0,1);
+  lcd.print("Do NOT place");
+  lcd.setCursor(0,2);
+  lcd.print("patient's foot");
+  lcd.setCursor(0,3);
+  lcd.print("Click to continue");
+
+}
+
+
+
+void drawCalibrating(){
+
+  lcd.clear();
+
+  lcd.print("Calibrating...");
+  lcd.setCursor(0,1);
+  lcd.print("Keep foot clear");
+
+}
+
+
+
 void drawMainMenu(int selected){
 
   lcd.clear();

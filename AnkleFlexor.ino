@@ -2,6 +2,11 @@
 #include "encoder.h"
 #include "menu.h"
 #include "states.h"
+#include "config.h"
+
+#include <Servo.h>
+
+Servo servo;
 
 Screen currentScreen = BOOT;
 
@@ -12,8 +17,17 @@ void setup() {
   encoderInit();
 
   showGreeting();
-
   delay(2000);
+
+  drawCalibrationWarning();
+  while(!encoderClicked()){
+    encoderUpdate();
+  }
+
+  drawCalibrating();
+  servo.attach(SERVO_PIN);
+  servo.write(SERVO_CENTER);
+  delay(1000);
 
   currentScreen = MAIN_MENU;
   drawMainMenu(0);

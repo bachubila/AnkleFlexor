@@ -128,8 +128,8 @@ void handleTherapySetMax(){
 
     therapyMax += move * 5;
 
-    if(therapyMax < 90)
-      therapyMax = 90;
+    if(therapyMax < 95)
+      therapyMax = 95;
 
     if(therapyMax > 110)
       therapyMax = 110;

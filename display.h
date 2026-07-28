@@ -5,6 +5,10 @@ void displayInit();
 
 void showGreeting();
 
+void drawCalibrationWarning();
+
+void drawCalibrating();
+
 void drawMainMenu(int selected);
 
 void drawManual(int angle);
