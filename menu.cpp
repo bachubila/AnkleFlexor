@@ -12,6 +12,8 @@ int selectedMode = 0;
 int therapyMin = 60;
 int therapyMax = 100;
 
+int manualAngle = 90;
+
 
 
 void handleMainMenu(){
@@ -45,8 +47,7 @@ void handleMainMenu(){
     if(selectedMode==0){
 
       currentScreen = MANUAL_MODE;
-      selectedMode = 0;
-      drawManual();
+      drawManual(manualAngle);
 
     }
     else{
@@ -63,10 +64,27 @@ void handleMainMenu(){
 
 void handleManualMode(){
 
+  int move = getEncoderDirection();
+
+  if(move){
+
+    manualAngle += move;
+
+    if(manualAngle < 0)
+      manualAngle = 0;
+
+    if(manualAngle > 180)
+      manualAngle = 180;
+
+    drawManual(manualAngle);
+
+  }
+
   if(encoderClicked()){
 
     currentScreen = MAIN_MENU;
     selectedMode = 0;
+    manualAngle = 90;
     drawMainMenu(selectedMode);
 
   }

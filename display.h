@@ -7,7 +7,7 @@ void showGreeting();
 
 void drawMainMenu(int selected);
 
-void drawManual();
+void drawManual(int angle);
 
 void drawTherapySetMin(int value);
 

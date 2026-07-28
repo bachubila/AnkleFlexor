@@ -55,14 +55,20 @@ void drawMainMenu(int selected){
 
 
 
-void drawManual(){
+void drawManual(int angle){
 
   lcd.clear();
 
   lcd.print("Manual Mode");
 
   lcd.setCursor(0,1);
-  lcd.print("Click to exit");
+  lcd.print("Angle: ");
+  lcd.print(angle);
+
+  lcd.setCursor(0,2);
+  lcd.print("Rotate to adjust");
+  lcd.setCursor(0,3);
+  lcd.print("Click: exit");
 
 }
 
