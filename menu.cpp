@@ -196,8 +196,6 @@ void handleTherapyMode(){
       digitalWrite(LED_PIN, LOW);
     }
 
-    drawTherapy(therapyMin, therapyMax, therapyAngle);
-
   }
 
   if(encoderClicked()){
@@ -236,9 +234,6 @@ void handlePauseMenu(){
     if(selectedMode==0){
 
       currentScreen = THERAPY_MODE;
-      therapyAngle = SERVO_CENTER;
-      therapyDirection = 1;
-      lastTherapyMove = millis();
       drawTherapy(therapyMin, therapyMax, therapyAngle);
 
     }

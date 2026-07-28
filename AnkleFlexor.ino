@@ -10,6 +10,8 @@ Servo servo;
 
 Screen currentScreen = BOOT;
 
+void(* resetFunc)(void) = 0;
+
 
 void setup() {
 
@@ -18,6 +20,7 @@ void setup() {
 
   pinMode(BUZZER_PIN, OUTPUT);
   pinMode(LED_PIN, OUTPUT);
+  pinMode(RESET_PIN, INPUT_PULLUP);
 
   showGreeting();
   delay(2000);
@@ -44,6 +47,9 @@ void setup() {
 
 
 void loop() {
+
+  if(digitalRead(RESET_PIN) == LOW)
+    resetFunc();
 
   encoderUpdate();
 

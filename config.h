@@ -12,6 +12,7 @@
 #define SERVO_PIN 6
 #define BUZZER_PIN 7
 #define LED_PIN 2
+#define RESET_PIN 8
 #define SERVO_CENTER 90
 
 #endif

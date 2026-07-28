@@ -147,8 +147,7 @@ void drawTherapy(int minVal, int maxVal, int current){
   lcd.print("Therapy Mode");
 
   lcd.setCursor(0,1);
-  lcd.print("Angle: ");
-  lcd.print(current);
+  lcd.print("Running...");
 
   lcd.setCursor(0,2);
   lcd.print("Min: ");
