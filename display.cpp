@@ -140,21 +140,20 @@ void drawTherapySetMax(int value){
 
 
 
-void drawTherapy(int minVal, int maxVal){
+void drawTherapy(int minVal, int maxVal, int current){
 
   lcd.clear();
 
   lcd.print("Therapy Mode");
 
   lcd.setCursor(0,1);
-  lcd.print("Running...");
+  lcd.print("Angle: ");
+  lcd.print(current);
 
   lcd.setCursor(0,2);
   lcd.print("Min: ");
   lcd.print(minVal);
-
-  lcd.setCursor(0,3);
-  lcd.print("Max: ");
+  lcd.print(" Max: ");
   lcd.print(maxVal);
 
 }

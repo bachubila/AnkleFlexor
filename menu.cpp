@@ -2,9 +2,14 @@
 #include "encoder.h"
 #include "display.h"
 #include "states.h"
+#include "config.h"
+
+#include <Arduino.h>
+#include <Servo.h>
 
 
 extern Screen currentScreen;
+extern Servo servo;
 
 
 int selectedMode = 0;
@@ -13,6 +18,10 @@ int therapyMin = 60;
 int therapyMax = 100;
 
 int manualAngle = 90;
+
+int therapyAngle = SERVO_CENTER;
+int therapyDirection = 1;
+unsigned long lastTherapyMove = 0;
 
 
 
@@ -76,12 +85,23 @@ void handleManualMode(){
     if(manualAngle > 180)
       manualAngle = 180;
 
+    if(manualAngle < 50 || manualAngle > 110){
+      digitalWrite(BUZZER_PIN, HIGH);
+      digitalWrite(LED_PIN, HIGH);
+    }
+    else{
+      digitalWrite(BUZZER_PIN, LOW);
+      digitalWrite(LED_PIN, LOW);
+    }
+
     drawManual(manualAngle);
 
   }
 
   if(encoderClicked()){
 
+    digitalWrite(BUZZER_PIN, LOW);
+    digitalWrite(LED_PIN, LOW);
     currentScreen = MAIN_MENU;
     selectedMode = 0;
     manualAngle = 90;
@@ -141,7 +161,10 @@ void handleTherapySetMax(){
   if(encoderClicked()){
 
     currentScreen = THERAPY_MODE;
-    drawTherapy(therapyMin, therapyMax);
+    therapyAngle = SERVO_CENTER;
+    therapyDirection = 1;
+    lastTherapyMove = millis();
+    drawTherapy(therapyMin, therapyMax, therapyAngle);
 
   }
 
@@ -150,8 +173,37 @@ void handleTherapySetMax(){
 
 void handleTherapyMode(){
 
+  if(millis() - lastTherapyMove >= 15){
+
+    lastTherapyMove = millis();
+
+    therapyAngle += therapyDirection;
+
+    if(therapyAngle >= therapyMax)
+      therapyDirection = -1;
+
+    if(therapyAngle <= therapyMin)
+      therapyDirection = 1;
+
+    servo.write(therapyAngle);
+
+    if(therapyAngle < 50 || therapyAngle > 110){
+      digitalWrite(BUZZER_PIN, HIGH);
+      digitalWrite(LED_PIN, HIGH);
+    }
+    else{
+      digitalWrite(BUZZER_PIN, LOW);
+      digitalWrite(LED_PIN, LOW);
+    }
+
+    drawTherapy(therapyMin, therapyMax, therapyAngle);
+
+  }
+
   if(encoderClicked()){
 
+    digitalWrite(BUZZER_PIN, LOW);
+    digitalWrite(LED_PIN, LOW);
     currentScreen = THERAPY_PAUSED;
     selectedMode = 0;
     drawPaused(selectedMode);
@@ -184,7 +236,10 @@ void handlePauseMenu(){
     if(selectedMode==0){
 
       currentScreen = THERAPY_MODE;
-      drawTherapy(therapyMin, therapyMax);
+      therapyAngle = SERVO_CENTER;
+      therapyDirection = 1;
+      lastTherapyMove = millis();
+      drawTherapy(therapyMin, therapyMax, therapyAngle);
 
     }
     else{

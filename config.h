@@ -10,6 +10,8 @@
 #define ENCODER_SW 5
 
 #define SERVO_PIN 6
+#define BUZZER_PIN 7
+#define LED_PIN 2
 #define SERVO_CENTER 90
 
 #endif

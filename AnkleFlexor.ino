@@ -16,8 +16,14 @@ void setup() {
   displayInit();
   encoderInit();
 
+  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(LED_PIN, OUTPUT);
+
   showGreeting();
   delay(2000);
+
+  digitalWrite(LED_PIN, HIGH);
+  digitalWrite(BUZZER_PIN, HIGH);
 
   drawCalibrationWarning();
   while(!encoderClicked()){
@@ -28,6 +34,9 @@ void setup() {
   servo.attach(SERVO_PIN);
   servo.write(SERVO_CENTER);
   delay(1000);
+
+  digitalWrite(LED_PIN, LOW);
+  digitalWrite(BUZZER_PIN, LOW);
 
   currentScreen = MAIN_MENU;
   drawMainMenu(0);
