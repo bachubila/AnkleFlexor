@@ -96,6 +96,7 @@ void handleManualMode(){
     }
 
     drawManual(manualAngle);
+    servo.write(manualAngle);
 
   }
 
