@@ -16,6 +16,7 @@ int selectedMode = 0;
 
 int therapyMin = 60;
 int therapyMax = 100;
+int therapySpeed = 15;
 
 int manualAngle = 90;
 
@@ -160,6 +161,34 @@ void handleTherapySetMax(){
 
   if(encoderClicked()){
 
+    currentScreen = THERAPY_SET_SPEED;
+    drawTherapySetSpeed(therapySpeed);
+
+  }
+
+}
+
+
+void handleTherapySetSpeed(){
+
+  int move = getEncoderDirection();
+
+  if(move){
+
+    therapySpeed += move * 5;
+
+    if(therapySpeed < 10)
+      therapySpeed = 10;
+
+    if(therapySpeed > 100)
+      therapySpeed = 100;
+
+    drawTherapySetSpeed(therapySpeed);
+
+  }
+
+  if(encoderClicked()){
+
     currentScreen = THERAPY_MODE;
     therapyAngle = SERVO_CENTER;
     therapyDirection = 1;
@@ -173,7 +202,7 @@ void handleTherapySetMax(){
 
 void handleTherapyMode(){
 
-  if(millis() - lastTherapyMove >= 15){
+  if(millis() - lastTherapyMove >= therapySpeed){
 
     lastTherapyMove = millis();
 

@@ -26,7 +26,7 @@ void setup() {
   delay(2000);
 
   digitalWrite(LED_PIN, HIGH);
-  digitalWrite(BUZZER_PIN, HIGH);
+  // digitalWrite(BUZZER_PIN, HIGH);
 
   drawCalibrationWarning();
   while(!encoderClicked()){
@@ -81,6 +81,13 @@ void loop() {
     case THERAPY_SET_MAX:
 
       handleTherapySetMax();
+
+      break;
+
+
+    case THERAPY_SET_SPEED:
+
+      handleTherapySetSpeed();
 
       break;
 

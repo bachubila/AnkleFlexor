@@ -10,6 +10,8 @@ void handleTherapySetMin();
 
 void handleTherapySetMax();
 
+void handleTherapySetSpeed();
+
 void handleTherapyMode();
 
 void handlePauseMenu();

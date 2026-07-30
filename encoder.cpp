@@ -24,6 +24,15 @@ void encoderInit(){
     INPUT_PULLUP
   );
 
+  pinMode(
+      ENCODER_CLK,
+      INPUT_PULLUP
+      );
+
+  pinMode(
+      ENCODER_DT,
+      INPUT_PULLUP
+      );
 }
 
 

@@ -140,6 +140,26 @@ void drawTherapySetMax(int value){
 
 
 
+void drawTherapySetSpeed(int value){
+
+  lcd.clear();
+
+  lcd.print("Set Speed");
+
+  lcd.setCursor(0,1);
+  lcd.print("Interval: ");
+  lcd.print(value);
+  lcd.print(" ms");
+
+  lcd.setCursor(0,2);
+  lcd.print("Lower = faster");
+  lcd.setCursor(0,3);
+  lcd.print("Click: confirm");
+
+}
+
+
+
 void drawTherapy(int minVal, int maxVal, int current){
 
   lcd.clear();

@@ -17,6 +17,8 @@ void drawTherapySetMin(int value);
 
 void drawTherapySetMax(int value);
 
+void drawTherapySetSpeed(int value);
+
 void drawTherapy(int minVal, int maxVal, int current);
 
 void drawPaused(int selected);
